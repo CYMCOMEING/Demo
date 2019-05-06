@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.libandroid">
 
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <!--允许程序连接到已配对的蓝牙设备-->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!--允许程序发现和配对蓝牙设备-->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <!--允许程序打开网络套接字-->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -19,8 +21,27 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application>
+
+        <!-- FileProvider配置访问路径，适配7.0及其以上 -->
+        <!--
+            authorities：app的包名.fileProvider
+            grantUriPermissions：必须是true，表示授予 URI 临时访问权限
+            exported：必须是false
+            resource：中的@xml/file_paths是我们接下来要添加的文件
+        -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.libandroid.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
         <activity android:name=".BluetoothActivity"></activity>
         <activity android:name=".amap.AMapActivity"></activity>
+        <activity android:name=".activities.BaseCameraActivity"></activity>
     </application>
 
 </manifest>

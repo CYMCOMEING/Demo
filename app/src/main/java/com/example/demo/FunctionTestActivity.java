@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import android.content.Intent;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,8 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.demo.R;
 import com.example.demo.bean.ItemFun;
+import com.example.libandroid.activities.BaseCameraActivity;
 import com.example.libandroid.notification.BaseNotification;
 import com.example.libandroid.recyclerView.BaseRecycleViewAdapter;
 import com.example.libandroid.recyclerView.BaseViewHolder;
@@ -73,7 +72,9 @@ public class FunctionTestActivity extends AppCompatActivity {
                 new BaseNotification().sendCustomNotification(this, MainActivity.class);
                 break;
             case 4:
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                startActivity(intent);
+                Intent intent = new Intent(this, BaseCameraActivity.class);
                 startActivity(intent);
                 break;
         }
