@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import android.content.Intent;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -56,6 +58,7 @@ public class FunctionTestActivity extends AppCompatActivity {
         mList.add(new ItemFun(1, "通知栏消息"));
         mList.add(new ItemFun(2, "带进度条通知栏"));
         mList.add(new ItemFun(3, "自定义通知栏"));
+        mList.add(new ItemFun(4, "系统照相机"));
     }
 
     private void itemonClisk(int id){
@@ -68,6 +71,10 @@ public class FunctionTestActivity extends AppCompatActivity {
                 break;
             case 3:
                 new BaseNotification().sendCustomNotification(this, MainActivity.class);
+                break;
+            case 4:
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivity(intent);
                 break;
         }
     }

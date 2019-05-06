@@ -9,6 +9,11 @@ public class Card {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "_id="+this._id+",name="+this.name;
+    }
+
     public int get_id() {
         return _id;
     }
